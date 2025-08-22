@@ -1,18 +1,19 @@
 {
   "name": "chat-web",
   "version": "1.0.0",
-  "description": "Chat web app",
+  "description": "Chat web app with Node.js, Express, Socket.IO, and MongoDB",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
-  "keywords": [],
+  "keywords": ["chat", "socket.io", "node", "express", "mongodb"],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "mongoose": "^8.17.2",
-    "socket.io": "^4.8.1"
+    "socket.io": "^4.8.1",
+    "dotenv": "^16.3.1"
   }
 }
