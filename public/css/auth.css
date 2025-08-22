@@ -1,0 +1,117 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #1f1f1f;
+  overflow: hidden;
+}
+
+#tsparticles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Grey transparent panel behind form */
+.panel {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(50,50,50,0.5); /* semi-transparent grey */
+}
+
+.auth-container {
+  max-width: 400px;
+  width: 90%;
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: center;
+  animation: slideDown 1s ease-out forwards; /* updated animation */
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%); /* start offscreen above */
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(-30%); /* moving down */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* settle at center */
+  }
+}
+
+
+.auth-container h1.brand {
+  font-size: 48px;
+  font-weight: bold;
+  color: black;
+  text-shadow: 0 0 3px gold, 0 0 6px gold, 0 0 12px gold, 0 0 18px gold;
+  animation: glow 3s infinite alternate;
+}
+
+.auth-container input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 18px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+}
+
+.auth-container input:focus {
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 0 10px gold;
+}
+
+.auth-container button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 18px;
+  border: none;
+  background: #2575fc;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.auth-container button:hover {
+  background: #1a5fd3;
+  box-shadow: 0 0 10px gold;
+}
+
+.auth-container a {
+  color: gold;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.auth-container a:hover {
+  text-shadow: 0 0 5px gold;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-60%); }
+  to { opacity: 1; transform: translateY(-50%); }
+}
+
+@keyframes glow {
+  0% { text-shadow: 0 0 3px gold,0 0 6px gold,0 0 12px gold,0 0 18px gold; }
+  50% { text-shadow: 0 0 6px gold,0 0 12px gold,0 0 18px gold,0 0 24px gold; }
+  100% { text-shadow: 0 0 3px gold,0 0 6px gold,0 0 12px gold,0 0 18px gold; }
+}

@@ -1,0 +1,123 @@
+/* ---------------- CHAT CSS (UNCHANGED) ---------------- */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #111;
+  overflow: hidden;
+}
+
+header {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 36px;
+  font-weight: bold;
+  color: black;
+  text-shadow:
+    0 0 3px gold,
+    0 0 6px gold,
+    0 0 12px gold,
+    0 0 18px gold;
+  animation: glow 3s infinite alternate;
+  z-index: 100;
+}
+
+#messages {
+  position: absolute;
+  top: 70px;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+}
+
+.message-container.mine {
+  align-self: flex-end;
+}
+
+.message-container:not(.mine) {
+  align-self: flex-start;
+}
+
+.message {
+  padding: 10px 15px;
+  border-radius: 15px;
+  word-wrap: break-word;
+  text-align: left;
+  display: inline-block;
+}
+
+.message-container.mine .message {
+  background: #2575fc;
+  color: #fff;
+}
+
+.message-container:not(.mine) .message {
+  background: #555;
+  color: #ccc;
+}
+
+.username {
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+.message-container.mine .username {
+  text-align: right;
+  color: #aaa;
+}
+
+.message-container:not(.mine) .username {
+  text-align: left;
+  color: #ccc;
+}
+
+.input-area {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+#message {
+  flex-grow: 1;
+  padding: 10px;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 15px;
+  border: none;
+  background: #FFD700;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: gold;
+}
+
+@keyframes glow {
+  0% { text-shadow: 0 0 3px gold,0 0 6px gold,0 0 12px gold,0 0 18px gold; }
+  50% { text-shadow: 0 0 6px gold,0 0 12px gold,0 0 18px gold,0 0 24px gold; }
+  100% { text-shadow: 0 0 3px gold,0 0 6px gold,0 0 12px gold,0 0 18px gold; }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tun Tauk Aung Chat</title>
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Brand name top-left -->
+  <header>Tun Tauk Aung</header>
+
+  <!-- Messages container -->
+  <div id="messages"></div>
+
+  <!-- Input area -->
+  <div class="input-area">
+    <input id="message" placeholder="Type your message">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+  <script>
+    const socket = io("http://localhost:5000");
+
+    // Random username for this session
+    const username = "User" + Math.floor(Math.random() * 1000);
+
+    socket.on("loadMessages", (messages) => {
+      messages.forEach(addMessage);
+      scrollToBottom();
+    });
+
+    socket.on("chatMessage", (msg) => {
+      addMessage(msg);
+      scrollToBottom();
+    });
+
+    function sendMessage() {
+      const text = document.getElementById("message").value;
+      if(text.trim() === "") return;
+
+      socket.emit("chatMessage", { username, text });
+      document.getElementById("message").value = "";
+    }
+
+    function addMessage(msg) {
+      // Message wrapper
+      const container = document.createElement("div");
+      container.classList.add("message-container");
+      if(msg.username === username) container.classList.add("mine");
+
+      // Message bubble
+      const bubble = document.createElement("div");
+      bubble.classList.add("message");
+      bubble.textContent = msg.text;
+
+      // Username under bubble
+      const userDiv = document.createElement("div");
+      userDiv.classList.add("username");
+      userDiv.textContent = msg.username;
+
+      container.appendChild(bubble);
+      container.appendChild(userDiv);
+      document.getElementById("messages").appendChild(container);
+    }
+
+    function scrollToBottom() {
+      const messages = document.getElementById("messages");
+      messages.scrollTop = messages.scrollHeight;
+    }
+  </script>
+
+</body>
+</html>

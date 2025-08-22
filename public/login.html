@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Tun Tauk Aung</title>
+  <link rel="stylesheet" href="css/auth.css">
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.min.js"></script>
+</head>
+<body>
+  <!-- Particle background -->
+  <div id="tsparticles"></div>
+
+  <!-- Semi-transparent panel -->
+  <div class="panel">
+    <div class="auth-container">
+      <h1 class="brand">Tun Tauk Aung</h1>
+      <h2>Login</h2>
+      <input type="text" placeholder="Username" id="loginUsername">
+      <input type="password" placeholder="Password" id="loginPassword">
+      <button onclick="login()">Login</button>
+      <p>Don't have an account? <a href="register.html">Register</a></p>
+    </div>
+  </div>
+
+  <script>
+    tsParticles.load("tsparticles", {
+      background: { color: { value: "#1f1f1f" } },
+      fpsLimit: 60,
+      interactivity: {
+        events: { onHover: { enable: true, mode: "repulse" }, resize: true },
+        modes: { repulse: { distance: 100, duration: 0.4 } }
+      },
+      particles: {
+        color: { value: "#FFD700" },
+        links: { enable: true, color: "#FFD700", distance: 150 },
+        collisions: { enable: true },
+        move: { enable: true, speed: 2, outModes: { default: "bounce" } },
+        number: { value: 50 },
+        opacity: { value: 0.6 },
+        shape: { type: "circle" },
+        size: { value: { min: 2, max: 5 } }
+      },
+      detectRetina: true
+    });
+
+    function login() {
+      const username = document.getElementById("loginUsername").value;
+      const password = document.getElementById("loginPassword").value;
+      alert(`Logging in as ${username}`);
+    }
+  </script>
+</body>
+</html>
