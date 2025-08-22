@@ -8,7 +8,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect("mongodb+srv://bryanwakuoo:12qw12qw@cluster0.hvbciik.mongodb.net/chatdb?retryWrites=true&w=majority");
+// MongoDB connection
+const mongoURI = process.env.MONGO_URI || "mongodb://localhost:27017/chatdb";
+mongoose.connect(mongoURI)
+  .then(() => console.log("✅ MongoDB connected"))
+  .catch((err) => console.error("❌ MongoDB connection error:", err));
 
 // User schema
 const userSchema = new mongoose.Schema({ username: String, password: String });
@@ -57,6 +61,6 @@ io.on("connection", (socket) => {
 // Serve frontend
 app.use(express.static("public"));
 
-
-const PORT = 5000;
-server.listen(PORT, () => console.log(`✅ Server running on http://localhost:${PORT}`));
+// Use Render's dynamic port
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
